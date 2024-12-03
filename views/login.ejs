@@ -1,13 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | iFaiyan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="w-full h-[100vh] text-white">
+      <nav class="p-10 h-[10vh] bg-zinc-900 flex items-center">
+        <h2 class="text-2xl font-light">iFaiyan</h2>
+      </nav>
 
-    <a href="/register">register page here!</a>
-    
-</body>
+      <form
+        action="/login"
+        method="post"
+        class="h-[90vh] bg-zinc-800 flex flex-col px-1"
+      >
+        <input
+          class="md:w-1/5 bg-transparent outline-none border border-white mt-3 rounded-sm px-5 py-3"
+          type="email"
+          name="email"
+          placeholder="email"
+          required
+        />
+        <input
+          class="md:w-1/5 bg-transparent outline-none border border-white mt-3 rounded-sm px-5 py-3"
+          type="password"
+          name="password"
+          placeholder="password"
+          required
+        />
+        <input
+          class="md:w-1/5 bg-emerald-500 px-5 py-3 mt-5 text-xl rounded-sm"
+          type="submit"
+          value="Login"
+        />
+      </form>
+    </div>
+  </body>
 </html>

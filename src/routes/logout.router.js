@@ -1,9 +1,9 @@
 const { Router } = require('express');
 const router = Router();
 
-const jwtRemover = require('../middlwares/jwt.remove.middlware');
+const { signOutJwt } = require('../middlwares/jwt.middlware');
 
-router.get('/', jwtRemover, (req, res) => {
+router.get('/', signOutJwt, (req, res) => {
   res.redirect('/login');
 });
 

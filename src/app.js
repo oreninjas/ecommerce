@@ -21,14 +21,14 @@ app.use(cookieParser());
 
 // Importing Routes
 const homeRedirectRouter = require('./routes/homeRedirect.router');
-const homeRouter = require('./routes/products.router');
+const productsRouter = require('./routes/products.router');
 const loginRouter = require('./routes/login.router');
 const logOutRouter = require('./routes/logout.router');
 const registerRouter = require('./routes/register.router');
 
 // Executing Routes
 app.use('/', homeRedirectRouter);
-app.use('/home', homeRouter);
+app.use('/products', productsRouter);
 app.use('/login', loginRouter);
 app.use('/logout', logOutRouter);
 app.use('/register', registerRouter);
