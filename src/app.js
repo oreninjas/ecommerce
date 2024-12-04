@@ -20,18 +20,12 @@ app.use(cors());
 app.use(cookieParser());
 
 // Importing Routes
-const homeRedirectRouter = require('./routes/homeRedirect.router');
-const productsRouter = require('./routes/products.router');
-const loginRouter = require('./routes/login.router');
-const logOutRouter = require('./routes/logout.router');
-const registerRouter = require('./routes/register.router');
+const productRoutes = require('./routes/products.router');
+const userRoutes = require('./routes/user.router');
 
 // Executing Routes
-app.use('/', homeRedirectRouter);
-app.use('/products', productsRouter);
-app.use('/login', loginRouter);
-app.use('/logout', logOutRouter);
-app.use('/register', registerRouter);
+app.use('/products', productRoutes);
+app.use('/', userRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

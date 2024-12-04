@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <form
+      class="bg-zinc-800 w-full h-screen p-10 text-white"
+      action="/products/create"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <label>Create Product</label>
+      <input
+        class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
+        type="text"
+        name="title"
+        placeholder="title"
+        required
+      />
+      <input
+        class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
+        type="text"
+        name="description"
+        placeholder="description"
+        required
+      />
+      <input
+        class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
+        type="number"
+        name="price"
+        placeholder="price"
+        required
+      />
+      <input
+        class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
+        type="file"
+        name="image"
+        placeholder="upload image"
+      />
+      <input
+        class="bg-emerald-500 px-4 py-3 rounded"
+        type="submit"
+        value="Create Product"
+      />
+    </form>
+  </body>
+</html>

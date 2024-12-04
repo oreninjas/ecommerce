@@ -2,32 +2,6 @@ const jwt = require('jsonwebtoken');
 const userModel = require('../models/user.model');
 const bcrypt = require('bcrypt');
 
-const signOutJwt = (req, res, next) => {
-  res.clearCookie('token');
-  next();
-};
-
-const autoRedirect = async (req, res, next) => {
-  try {
-    const token = req.cookies.token;
-
-    if (!token) {
-      res.redirect('/login');
-    }
-    let { _id, email } = jwt.verify(token, process.env.JWT_SECRET);
-    let user = await userModel.findOne({ _id, email });
-    if (!user) {
-      return res.redirect('/login');
-    }
-    console.log('User found: ', user);
-    req.user = user;
-
-    return next();
-  } catch (error) {
-    console.log('Error while getting user cookie !! ', error);
-  }
-};
-
 const loginJwt = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -50,8 +24,9 @@ const loginJwt = async (req, res, next) => {
       expiresIn: '1h',
     });
 
-    res.cookie('token', signJwt);
+    req.user = user;
 
+    res.cookie('token', signJwt);
     return next();
   } catch (error) {
     console.log('Error while logging in!!', error);
@@ -59,4 +34,19 @@ const loginJwt = async (req, res, next) => {
   }
 };
 
-module.exports = { loginJwt, autoRedirect, signOutJwt };
+const tokenVerify = async (req, res, next) => {
+  const token = req.cookies?.token;
+  if (!token) {
+    return res.redirect('/login');
+  }
+
+  try {
+    const isVerified = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = await userModel.findById(isVerified._id).select('-password');
+    next();
+  } catch (error) {
+    res.redirect('/login');
+  }
+};
+
+module.exports = { loginJwt, tokenVerify };

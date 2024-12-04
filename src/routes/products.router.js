@@ -1,9 +1,11 @@
 const { Router } = require('express');
+const { product } = require('../controllers/products.controller');
+const { tokenVerify } = require('../middlwares/jwt.middlware');
 const router = Router();
-const { autoRedirect } = require('../middlwares/jwt.middlware');
+const upload = require('../middlwares/multer.middlware');
 
-router.get('/', autoRedirect, (req, res) => {
-  res.render('/products');
-});
+router.get('/', tokenVerify, product.productsPage);
+router.get('/create', tokenVerify, product.createPage);
+router.post('/create', tokenVerify, upload.single('image'), product.createFunc);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const { Schema, mongoose } = require('mongoose');
+const { Schema, mongoose, Types } = require('mongoose');
 
 const userSchema = new Schema({
   username: {
@@ -19,6 +19,12 @@ const userSchema = new Schema({
   image: {
     type: String,
   },
+  posts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'product',
+    },
+  ],
 });
 
 module.exports = mongoose.model('user', userSchema);
