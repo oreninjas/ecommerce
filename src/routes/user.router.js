@@ -1,9 +1,12 @@
 const { Router } = require('express');
-const { loginJwt } = require('../middlwares/jwt.middlware');
+const { loginJwt, tokenVerify } = require('../middlwares/jwt.middlware');
 const upload = require('../middlwares/multer.middlware');
 const router = Router();
 // Imports of Controllers
 const { userRoutes } = require('../controllers/userRoutes.controller');
+
+// Slash Redirector
+router.get('/', userRoutes.slashRedirector);
 
 // Register
 router.get('/register', userRoutes.registerPage);

@@ -15,7 +15,7 @@
       <form
         action="/login"
         method="post"
-        class="h-[90vh] bg-zinc-800 flex flex-col px-1"
+        class="h-[90vh] bg-zinc-800 flex flex-col p-10"
       >
         <input
           class="md:w-1/5 bg-transparent outline-none border border-white mt-3 rounded-sm px-5 py-3"
@@ -25,12 +25,13 @@
           required
         />
         <input
-          class="md:w-1/5 bg-transparent outline-none border border-white mt-3 rounded-sm px-5 py-3"
+          class="md:w-1/5 bg-transparent outline-none border border-white mt-3 mb-2 rounded-sm px-5 py-3"
           type="password"
           name="password"
           placeholder="password"
           required
         />
+        <p>Don't have an Account? <a href="/register" class="text-blue-500">here</a></p>
         <input
           class="md:w-1/5 bg-emerald-500 px-5 py-3 mt-5 text-xl rounded-sm"
           type="submit"

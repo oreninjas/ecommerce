@@ -15,7 +15,7 @@
       <form
         action="/register"
         method="post"
-        class="h-[90vh] bg-zinc-800 flex flex-col px-1"
+        class="h-[90vh] bg-zinc-800 flex flex-col p-10"
         enctype="multipart/form-data"
       >
         <input
@@ -39,7 +39,8 @@
           placeholder="password"
           required
         />
-        <input type="file" name="image" />
+        <input class="mb-2 mt-2" type="file" name="image" />
+        <p>Already have an Account? <a href="/login" class="text-blue-500">here</a></p>
         <input
           class="md:w-1/5 bg-emerald-500 px-5 py-3 mt-5 text-xl rounded-sm"
           type="submit"

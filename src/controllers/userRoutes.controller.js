@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 const cloudinaryUploader = require('../utils/cloudinary');
 
 const userRoutes = {
+  slashRedirector: (req, res) => {
+    res.redirect('/products');
+  },
   registerPage: (req, res) => {
     res.render('register');
   },
