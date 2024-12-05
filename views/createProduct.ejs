@@ -10,6 +10,7 @@
     <div class="w-full h-screen p-10">
       <h1 class="mb-4 text-2xl">Create Your Product.</h1>
       <form
+        class="flex flex-col gap-5"
         action="/products/create"
         method="post"
         enctype="multipart/form-data"
@@ -21,21 +22,20 @@
           placeholder="title"
           required
         />
-        <input
-          class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
-          type="text"
+        <textarea
+          class="bg-transparent border border-zinc-900 px-3 py-3"
           name="description"
-          placeholder="description"
-          required
-        />
+          placeholder="description..."
+        ></textarea>
         <input
           class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
           type="number"
           name="price"
           placeholder="price"
+          min="10"
           required
         />
-        <p class="image-uploader-click mb-2 mt-2 text-xl">
+        <p class="image-uploader-click mb-2 mt-2 text-xl w-fit">
           Upload a image <span class="text-blue-500 cursor-pointer">here</span>
           <sup class="text-red-500">required</sup>
         </p>

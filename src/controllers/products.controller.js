@@ -38,11 +38,9 @@ const product = {
     }
   },
   productsPage: async (req, res) => {
-    res.render('products');
-  },
-  productsFunc: async (req, res) => {
     let products = await productModel.find().limit(10);
-    res.json({ products }); // Delete this and pass on Products Page products variable.
+
+    res.render('products', { product: products });
   },
 };
 

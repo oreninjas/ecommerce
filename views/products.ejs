@@ -1,26 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | iFaiyam</title>
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
+  </head>
+  <body>
 
-    <nav class="p-10 flex justify-between">
-        <h2 class="text-2xl">iFaiyan</h2>
-        <div class="flex gap-10 list-none">
-            <li class="hover:cursor-pointer"><a href="/">Home</a></li>
-            <li class="hover:cursor-pointer"><a href="/products">Products</a></li>
-            <li class="hover:cursor-pointer"><a href="/products/create">Create</a></li>
-            <li><a href="/logout">LogOut</a></li>
-        </div>
+    <nav class="w-full h-[10vh] p-10 flex items-center justify-between bg-[#ebebeb]">
+      <h2 class="text-2xl"><a href="/">iFaiyan</a></h2>
+      <div class="hidden md:flex gap-10 list-none">
+        <li class="hover:cursor-pointer"><a href="/">Home</a></li>
+        <li class="hover:cursor-pointer"><a href="/products">Products</a></li>
+        <li class="hover:cursor-pointer">
+          <a href="/products/create">Create</a>
+        </li>
+        <li><a href="/logout">LogOut</a></li>
+      </div>
     </nav>
 
-    <div>
-        There's no product's yet!! go create 1
-    </div>
+    <div class="w-full h-[90vh] flex bg-[#ebebeb]">
+      <div class="hidden md:block left-0 w-1/5 list-none">
+          <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+            <a class="block" href="/products">Products</a>
+        </li>
+          <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+            <a class="block" href="/basket">Your Basket</a>
+        </li>
+          <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+            <a class="block" href="/my-store">My Store</a>
+        </li>
+      </div>
+      <div class="right w-full md:pl-5 flex gap-10 flex-wrap items-center overflow-scroll">
+        <% if(product.length > 0){ %>
+          <% product.forEach(function(item){ %>
+            <div class="bg-white w-full md:w-1/6 rounded p-3 cursor-pointer">
+              <img class="object-cover w-full h-[200px] rounded-sm" src="<%= item.image %>" alt="product img">
+              <h2 class="font-light mt-2"><%= item.title %></h2>
+              <p class="font-medium text-blue-500">read more...</p>
+            </div>
+          <% }) %>
+          <% }else{ %>
+            <h2>There's no product yet!!</h2>
+          <% } %>
+      </div>
 
-</body>
+    </div>
+  </body>
 </html>
