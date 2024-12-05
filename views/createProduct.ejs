@@ -35,18 +35,20 @@
           placeholder="price"
           required
         />
-        <p class="image-uploader-click mb-2 mt-2">
+        <p class="image-uploader-click mb-2 mt-2 text-xl">
           Upload a image <span class="text-blue-500 cursor-pointer">here</span>
+          <sup class="text-red-500">required</sup>
         </p>
         <input
           class="hidden image-uploader"
           type="file"
-          name="image"
+          name="productImage"
           placeholder="upload image"
           accept="image/*"
+          required
         />
         <input
-          class="bg-emerald-500 px-4 py-3 rounded"
+          class="bg-emerald-500 px-4 py-3 rounded cursor-pointer"
           type="submit"
           value="Create Product"
         />

@@ -6,6 +6,6 @@ const upload = require('../middlwares/multer.middlware');
 
 router.get('/', tokenVerify, product.productsPage);
 router.get('/create', tokenVerify, product.createPage);
-router.post('/create', tokenVerify, upload.single('image'), product.createFunc);
+router.post('/create', tokenVerify, upload.single('productImage'), product.createFunc);
 
 module.exports = router;

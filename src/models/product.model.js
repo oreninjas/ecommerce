@@ -20,7 +20,7 @@ const productSchema = new Schema(
     },
     image: {
       type: String,
-      // required: [true, 'Atleast 1 picture is required!'],
+      required: [true, 'Atleast 1 picture is required!'],
     },
     isApproved: {
       type: Boolean,
