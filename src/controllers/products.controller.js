@@ -15,31 +15,25 @@ const product = {
       let response = await cloudinary(image);
       let imgUrl = response.url;
 
-      let userFromMiddleware = req.user;
+      let user = req.user;
       let product = await productModel.create({
-        createdBy: userFromMiddleware._id,
+        createdBy: user._id,
         title,
         description,
         price,
         image: imgUrl,
       });
 
-      let userId = req.cookies.token;
-      let verifiedUser = jwt.verify(userId, process.env.JWT_SECRET);
-      if (!verifiedUser) {
-        return res.redirect('/');
-      }
-
-      let dbUser = await userModel.findOne({ _id: verifiedUser._id });
-      await dbUser.findOneAndUpdate(
-        { _id: verifiedUser._id },
-        { $push: { posts: product._id } },
-        { new: true },
-      );
+      let dbUser = await userModel.findOne({ _id: user._id });
+      await dbUser.posts.push(product._id);
+      await dbUser.save();
 
       return res.redirect('/products');
     } catch (error) {
-      console.log('Error occured while uploading img to cloudinary !! ', error);
+      console.log(
+        'Error occured while uploading img to cloudinary check product controller !!! ',
+        error,
+      );
       res.redirect('/products');
     }
   },
