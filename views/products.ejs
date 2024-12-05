@@ -18,7 +18,20 @@
         </li>
         <li><a href="/logout">LogOut</a></li>
       </div>
+      <img class="responsive-button md:hidden w-6" src="https://cdn-icons-png.flaticon.com/128/17821/17821829.png" alt="menu button">
     </nav>
+
+    <div class="mobile-menu hidden md:hidden left-0 w-full list-none">
+      <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+        <a class="block" href="/products">Products</a>
+    </li>
+      <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+        <a class="block" href="/basket">Your Basket</a>
+    </li>
+      <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+        <a class="block" href="/my-store">My Store</a>
+    </li>
+  </div>
 
     <div class="w-full h-[90vh] flex bg-[#ebebeb]">
       <div class="hidden md:block left-0 w-1/5 list-none">
@@ -32,12 +45,12 @@
             <a class="block" href="/my-store">My Store</a>
         </li>
       </div>
-      <div class="right w-full md:pl-5 flex gap-10 flex-wrap items-center overflow-scroll">
+      <div class="right w-full md:pl-5 flex gap-10 flex-wrap items-center overflow-y-scroll">
         <% if(product.length > 0){ %>
           <% product.forEach(function(item){ %>
             <div class="bg-white w-full md:w-1/6 rounded p-3 cursor-pointer">
               <img class="object-cover w-full h-[200px] rounded-sm" src="<%= item.image %>" alt="product img">
-              <h2 class="font-light mt-2"><%= item.title %></h2>
+              <h2 class="font-light mt-2"><%= item.title.slice(0,60) %>...</h2>
               <p class="font-medium text-blue-500">read more...</p>
             </div>
           <% }) %>
@@ -47,5 +60,19 @@
       </div>
 
     </div>
+    <script>
+      const button = document.querySelector('.responsive-button');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      let holder = false; // true means enabled false disabled.
+      button.addEventListener('click', ()=>{
+        if(holder == false){
+          holder = true
+          mobileMenu.classList.remove('hidden');
+        }else{
+          holder = false
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    </script>
   </body>
 </html>
