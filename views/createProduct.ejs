@@ -7,45 +7,58 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <form
-      class="bg-zinc-800 w-full h-screen p-10 text-white"
-      action="/products/create"
-      method="post"
-      enctype="multipart/form-data"
-    >
-      <label>Create Product</label>
-      <input
-        class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
-        type="text"
-        name="title"
-        placeholder="title"
-        required
-      />
-      <input
-        class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
-        type="text"
-        name="description"
-        placeholder="description"
-        required
-      />
-      <input
-        class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
-        type="number"
-        name="price"
-        placeholder="price"
-        required
-      />
-      <input
-        class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
-        type="file"
-        name="image"
-        placeholder="upload image"
-      />
-      <input
-        class="bg-emerald-500 px-4 py-3 rounded"
-        type="submit"
-        value="Create Product"
-      />
-    </form>
+    <div class="w-full h-screen p-10">
+      <h1 class="mb-4 text-2xl">Create Your Product.</h1>
+      <form
+        action="/products/create"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <input
+          class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
+          type="text"
+          name="title"
+          placeholder="title"
+          required
+        />
+        <input
+          class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
+          type="text"
+          name="description"
+          placeholder="description"
+          required
+        />
+        <input
+          class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
+          type="number"
+          name="price"
+          placeholder="price"
+          required
+        />
+        <p class="image-uploader-click mb-2 mt-2">
+          Upload a image <span class="text-blue-500 cursor-pointer">here</span>
+        </p>
+        <input
+          class="hidden image-uploader"
+          type="file"
+          name="image"
+          placeholder="upload image"
+          accept="image/*"
+        />
+        <input
+          class="bg-emerald-500 px-4 py-3 rounded"
+          type="submit"
+          value="Create Product"
+        />
+      </form>
+    </div>
+
+    <script>
+      const clickInput = document.querySelector('.image-uploader-click');
+      const uploader = document.querySelector('.image-uploader');
+      clickInput.addEventListener('click', (req, res) => {
+        uploader.click();
+      });
+    </script>
   </body>
 </html>
