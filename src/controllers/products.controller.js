@@ -38,9 +38,20 @@ const product = {
     }
   },
   productsPage: async (req, res) => {
-    let products = await productModel.find().limit(10);
+    const page = req.query.p || 0;
+    const items = 5;
+    let products = await productModel
+      .find()
+      .skip(page * items)
+      .limit(5);
 
     res.render('products', { product: products });
+  },
+  eachProductPage: async (req, res) => {
+    const productId = req.params.id;
+    let product = await productModel.findOne({ _id: productId });
+
+    res.render('eachProduct', { product });
   },
 };
 
