@@ -53,6 +53,26 @@ const product = {
 
     res.render('eachProduct', { product });
   },
+  basketPage: (req, res) => {
+    res.render('basket');
+  },
+  searchSuggestions: async (req, res) => {
+    const query = req.query.q;
+    console.log(query);
+    if (!query) return res.json([]);
+
+    try {
+      const results = await productModel.find({
+        title: { $regex: query, $options: 'i' },
+      }).limit(3);
+
+      console.log(results);
+
+      res.json(results);
+    } catch (error) {
+      console.log(error);
+    }
+  },
 };
 
 module.exports = { product };

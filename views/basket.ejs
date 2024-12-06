@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>iProducts | iFaiyan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <nav
+      class="w-full h-[10vh] p-10 flex items-center justify-between bg-[#ebebeb]"
+    >
+      <h2 class="text-2xl"><a href="/">iFaiyan</a></h2>
+      <div class="hidden md:flex gap-10 list-none">
+        <li class="hover:cursor-pointer"><a href="/">Home</a></li>
+        <li class="hover:cursor-pointer"><a href="/products">Products</a></li>
+        <li><a href="/logout">LogOut</a></li>
+      </div>
+      <img
+        class="responsive-button md:hidden w-6"
+        src="https://cdn-icons-png.flaticon.com/128/17821/17821829.png"
+        alt="menu button"
+      />
+    </nav>
+
+    <div class="mobile-menu hidden md:hidden left-0 w-full list-none">
+      <li
+        class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3"
+      >
+        <a class="block" href="/products">Products</a>
+      </li>
+      <li
+        class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3"
+      >
+        <a class="block" href="/basket">Your Basket</a>
+      </li>
+      <li
+        class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3"
+      >
+        <a class="block" href="/my-store">My Store</a>
+      </li>
+    </div>
+
+    <div class="w-full h-[90vh] flex bg-[#ebebeb]">
+      <div class="hidden md:block left-0 w-1/5 list-none">
+        <li
+          class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3"
+        >
+          <a class="block" href="/products">Products</a>
+        </li>
+        <li
+          class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3"
+        >
+          <a class="block" href="/basket">Basket</a>
+        </li>
+        <li
+          class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3"
+        >
+          <a class="block" href="/my-store">My Store</a>
+        </li>
+      </div>
+
+      <div class="right px-5 w-full h-full">
+        <!-- Model -->
+        <div class="w-full h-32 bg-zinc-100 rounded">
+          <img
+            class="w-32 h-full"
+            src="https://res.cloudinary.com/dvzoemogv/image/upload/v1733431841/mr2orgoaxoen7zlezujh.webp"
+            alt="Product images!"
+          />
+        </div>
+      </div>
+    </div>
+    <script>
+      const button = document.querySelector('.responsive-button');
+      const mobileMenu = document.querySelector('.mobile-menu');
+      let holder = false; // true means enabled false disabled.
+      button.addEventListener('click', () => {
+        if (holder == false) {
+          holder = true;
+          mobileMenu.classList.remove('hidden');
+        } else {
+          holder = false;
+          mobileMenu.classList.add('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>

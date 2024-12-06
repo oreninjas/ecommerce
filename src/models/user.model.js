@@ -19,6 +19,12 @@ const userSchema = new Schema({
   image: {
     type: String,
   },
+  basket: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'product',
+    },
+  ],
   posts: [
     {
       type: Schema.Types.ObjectId,
