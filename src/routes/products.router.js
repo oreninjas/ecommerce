@@ -6,7 +6,7 @@ const upload = require('../middlwares/multer.middlware');
 
 // Product showcase!
 router.get('/', tokenVerify, product.productsPage);
-router.get('/product/:id', tokenVerify, product.eachProductPage);
+router.get('/pro/:id', tokenVerify, product.eachProductPage);
 
 // Product creation!
 router.get('/create', tokenVerify, product.createPage);
