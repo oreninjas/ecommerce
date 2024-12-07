@@ -53,8 +53,12 @@ const product = {
 
     res.render('eachProduct', { product });
   },
-  basketPage: (req, res) => {
-    res.render('basket');
+  basketPage: async (req, res) => {
+    const user = req.user;
+
+    let productDetails = await productModel.find({ _id: user.basket });
+
+    res.render('basket', { products: productDetails });
   },
   searchSuggestions: async (req, res) => {
     const query = req.query.q;
@@ -83,6 +87,15 @@ const product = {
     } catch (error) {
       console.log('Error occured while adding products to cart !! ', error);
     }
+  },
+  eachProductRemoverFunc: async (req, res) => {
+    const productId = req.params.id;
+    const user = req.user;
+
+    let dbUser = await userModel.findOne({ _id: user._id });
+    await dbUser.basket.pop(productId); // i wanna delete product
+    await dbUser.save();
+    res.redirect('/basket');
   },
 };
 

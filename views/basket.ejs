@@ -65,30 +65,33 @@
         </li>
       </div>
 
-      <div class="right px-5 w-full h-full">
+      <div class="right px-5 w-full h-full flex flex-col gap-10 overflow-scroll">
         <!-- Model -->
-        <div class="w-full h-32 bg-zinc-100 rounded">
-          <img
-            class="w-32 h-full"
-            src="https://res.cloudinary.com/dvzoemogv/image/upload/v1733431841/mr2orgoaxoen7zlezujh.webp"
-            alt="Product images!"
-          />
-        </div>
+         <% if(products.length > 0){ %>
+          <% products.forEach(function(item){ %>
+            <div class="w-full h-32 md:h-40 bg-zinc-100 rounded flex">
+              <img
+                class="max-w-32 h-full object-cover rounded"
+                src="<%= item.image %>"
+                alt="Product images!"
+              />
+              <div class="w-full h-full flex flex-col items-center justify-center">
+                <h3><%= item.title %></h3>
+                <p class="font-light"><%= item.description %></p>
+                <h3>Price: <%= item.price %></h3>
+              </div>
+              <div class="flex justify-center items-center w-full h-full">
+                <a class="cursor-pointer bg-red-500 px-5 py-3 rounded font-semibold text-white" onclick="removeProduct('<%= item._id %>')">Remove</a>
+              </div>
+            </div>
+          <% }) %>
+         <% }else{ %>
+          <p>There's no items yet!! Add items from <a class="text-blue-500" href="/products">here.</a></p>
+         <% } %>
       </div>
+
     </div>
-    <script>
-      const button = document.querySelector('.responsive-button');
-      const mobileMenu = document.querySelector('.mobile-menu');
-      let holder = false; // true means enabled false disabled.
-      button.addEventListener('click', () => {
-        if (holder == false) {
-          holder = true;
-          mobileMenu.classList.remove('hidden');
-        } else {
-          holder = false;
-          mobileMenu.classList.add('hidden');
-        }
-      });
-    </script>
+
+    <script src="/js/basket.js"></script>
   </body>
 </html>

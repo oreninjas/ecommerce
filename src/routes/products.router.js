@@ -12,7 +12,8 @@ router.get('/:id', tokenVerify, product.eachProductPage);
 router.get('/create', tokenVerify, product.createPage);
 router.post('/create', tokenVerify, upload.single('productImage'), product.createFunc);
 
-// Add product to cart!
+// Add/remove product to cart!
 router.post('/addtocart/:id', tokenVerify, product.addToCart);
+router.post('/remove/:id', tokenVerify, product.eachProductRemoverFunc)
 
 module.exports = router;

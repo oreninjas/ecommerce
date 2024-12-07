@@ -21,7 +21,7 @@ router.post('/login', loginJwt, userRoutes.loginFunc);
 router.get('/logout', userRoutes.logoutFunc);
 
 // Basket
-router.get('/basket', product.basketPage);
+router.get('/basket', tokenVerify, product.basketPage);
 
 // Search Suggestions!
 router.get('/search-suggestions', product.searchSuggestions)
