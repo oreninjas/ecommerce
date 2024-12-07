@@ -14,6 +14,8 @@ const userRoutes = {
     const { username, email, password } = req.body;
     const image = req.file?.path;
 
+    if(!req.file) return res.redirect('/register');
+
     let imageUrl = null;
     if (image) {
       const uploadResult = await cloudinaryUploader(image);

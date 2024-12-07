@@ -39,7 +39,7 @@ const product = {
   },
   productsPage: async (req, res) => {
     const user = req.user;
-    const isClientAdmin = user.isAdmin === true;
+
     const page = req.query.p || 0;
     const items = 5;
     let products = await productModel
