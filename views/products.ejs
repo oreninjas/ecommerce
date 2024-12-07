@@ -19,7 +19,7 @@
             </div>
           </div>
           <li class="hover:cursor-pointer"><a href="/">Home</a></li>
-          <%= if(user.isAdmin === true){ %>
+          <% if(user.isAdmin === true){ %>
             <li class="hover:cursor-pointer"><a href="/products/create">Create</a></li>
           <% } %>
           <li><a href="/logout">LogOut</a></li>
