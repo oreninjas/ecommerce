@@ -39,14 +39,42 @@
           placeholder="password"
           required
         />
-        <input class="mb-2 mt-2" type="file" name="image" />
-        <p>Already have an Account? <a href="/login" class="text-blue-500">here</a></p>
+        <div
+          class="uploader-div md:w-1/5 rounded my-5 border border-white text-center py-4 cursor-pointer"
+        >
+          <h2>upload image</h2>
+        </div>
         <input
-          class="md:w-1/5 bg-emerald-500 px-5 py-3 mt-5 text-xl rounded-sm"
+          class="file-uploader mb-2 mt-2 hidden"
+          type="file"
+          name="image"
+          accept="image/*"
+        />
+        <p>
+          Already have an Account?
+          <a href="/login" class="text-blue-500">here</a>
+        </p>
+        <input
+          class="md:w-1/5 bg-emerald-500 px-5 py-3 mt-5 text-xl rounded-sm cursor-pointer"
           type="submit"
           value="Register"
         />
       </form>
     </div>
+
+    <script>
+      const uploaderDiv = document.querySelector('.uploader-div');
+      const uploader = document.querySelector('.file-uploader');
+      uploaderDiv.addEventListener('click', () => {
+        uploader.click();
+      });
+
+      uploader.addEventListener('change', () => {
+        if (uploader.files.length > 0) {
+          uploaderDiv.classList.remove('border-white');
+          uploaderDiv.classList.add('border-green-500');
+        }
+      });
+    </script>
   </body>
 </html>
