@@ -38,6 +38,7 @@ const product = {
     }
   },
   productsPage: async (req, res) => {
+    const user = req.user;
     const page = req.query.p || 0;
     const items = 5;
     let products = await productModel
@@ -45,7 +46,7 @@ const product = {
       .skip(page * items)
       .limit(5);
 
-    res.render('products', { product: products });
+    res.render('products', { product: products, user });
   },
   eachProductPage: async (req, res) => {
     const productId = req.params.id;

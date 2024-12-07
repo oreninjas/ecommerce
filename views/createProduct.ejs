@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <div class="w-full h-screen p-10">
+    <div class="bg-zinc-800 text-white w-full h-screen p-10">
       <h1 class="mb-4 text-2xl">Create Your Product.</h1>
       <form
         class="flex flex-col gap-5"
@@ -16,39 +16,39 @@
         enctype="multipart/form-data"
       >
         <input
-          class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
+          class="w-full md:w-1/5 bg-transparent border border-zinc-500 px-3 py-3 outline-none rounded"
           type="text"
           name="title"
           placeholder="title"
           required
         />
         <textarea
-          class="bg-transparent border border-zinc-900 px-3 py-3"
+          class="w-full md:w-1/5 bg-transparent border border-zinc-500 px-3 py-3"
           name="description"
           placeholder="description..."
         ></textarea>
         <input
-          class="bg-transparent border border-zinc-900 px-3 py-3 outline-none rounded"
+          class="w-full md:w-1/5 bg-transparent border border-zinc-500 px-3 py-3 outline-none rounded"
           type="number"
           name="price"
           placeholder="price"
           min="10"
           required
         />
-        <p class="image-uploader-click mb-2 mt-2 text-xl w-fit">
-          Upload a image <span class="text-blue-500 cursor-pointer">here</span>
-          <sup class="text-red-500">required</sup>
+        <p
+          class="w-full md:w-1/5 image-uploader-click border border-white hover:border-zinc-500 hover:text-zinc-500 cursor-pointer p-2 text-center rounded transition duration-300 ease-in"
+        >
+          upload a image
         </p>
         <input
           class="hidden image-uploader"
           type="file"
           name="productImage"
-          placeholder="upload image"
           accept="image/*"
           required
         />
         <input
-          class="bg-emerald-500 px-4 py-3 rounded cursor-pointer"
+          class="w-full md:w-1/5 bg-emerald-500 px-4 py-3 rounded cursor-pointer hover:bg-emerald-600 transition duration-250 ease-in-out"
           type="submit"
           value="Create Product"
         />
@@ -60,6 +60,12 @@
       const uploader = document.querySelector('.image-uploader');
       clickInput.addEventListener('click', (req, res) => {
         uploader.click();
+      });
+      uploader.addEventListener('change', () => {
+        if (uploader.files.length > 0) {
+          clickInput.classList.remove('border-white');
+          clickInput.classList.add('border-green-500', 'text-green-500');
+        }
       });
     </script>
   </body>

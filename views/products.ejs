@@ -19,6 +19,9 @@
             </div>
           </div>
           <li class="hover:cursor-pointer"><a href="/">Home</a></li>
+          <%= if(user.isAdmin === true){ %>
+            <li class="hover:cursor-pointer"><a href="/products/create">Create</a></li>
+          <% } %>
           <li><a href="/logout">LogOut</a></li>
         </div>
         <img class="responsive-button md:hidden w-6" src="https://cdn-icons-png.flaticon.com/128/17821/17821829.png" alt="menu button">
@@ -61,7 +64,7 @@
                   <img onclick="addCart('<%= item._id %>')" class="w-8 h-8 cursor-pointer" src="https://cdn-icons-png.flaticon.com/128/2956/2956820.png" alt="basket icon">
                   <h2 class="font-light mt-2"><%= item.title.slice(0,60) %>...</h2>
                 </div>
-                <p class="font-medium text-blue-500"><a href="/products/<%= item._id %>">read more...</a></p>
+                <p class="font-medium text-blue-500"><a href="/products/pro/<%= item._id %>">read more...</a></p>
               </div>
               <% }) %>
               <% }else{ %>

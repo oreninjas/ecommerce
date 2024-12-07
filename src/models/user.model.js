@@ -31,6 +31,10 @@ const userSchema = new Schema({
       ref: 'product',
     },
   ],
+  isAdmin: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model('user', userSchema);
