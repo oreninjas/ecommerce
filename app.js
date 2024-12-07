@@ -1,7 +1,7 @@
 require('dotenv').config({ path: './.env' });
 
 // Db connection
-const connectDB = require('./db/db.connection');
+const connectDB = require('./src/db/db.connection');
 connectDB();
 
 const express = require('express');
@@ -21,8 +21,8 @@ app.use(cors());
 app.use(cookieParser());
 
 // Importing Routes
-const productRoutes = require('./routes/products.router');
-const userRoutes = require('./routes/user.router');
+const productRoutes = require('./src/routes/products.router');
+const userRoutes = require('./src/routes/user.router');
 
 // Executing Routes
 app.use('/products', productRoutes);

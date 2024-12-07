@@ -4,7 +4,7 @@
   "description": "A ecommerce app to clear my concepts.",
   "main": "app.js",
   "scripts": {
-    "start": "npx nodemon src/app.js"
+    "start": "npx nodemon app.js"
   },
   "keywords": [
     "nodejs",
