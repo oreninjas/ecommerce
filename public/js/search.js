@@ -19,7 +19,6 @@ const addCart = (id) => {
 // Search logic
 const searchInput = document.querySelector('.search');
 const suggestionList = document.querySelector('.suggestion-list');
-const parentOfSearch = document.querySelector('.parent-search');
 
 searchInput.addEventListener('keyup', async () => {
   suggestionList.innerHTML = '';
@@ -33,15 +32,16 @@ searchInput.addEventListener('keyup', async () => {
       suggestions.forEach((suggestion) => {
         const newLi = document.createElement('li');
         newLi.textContent = suggestion.title;
-        parentOfSearch.appendChild(newLi);
+        suggestionList.appendChild(newLi);
         if (newLi) {
           newLi.classList.add('cursor-pointer');
         }
+        newLi.addEventListener('click', () => {
+          window.location.href = `/products/${suggestion._id}`;
+        });
       });
     } catch (error) {
       console.log('There was error fetching Search Queries !!! ', error);
     }
   }
-
-
 });

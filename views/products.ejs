@@ -8,72 +8,75 @@
   </head>
   <body>
 
-    <nav class="w-full h-[10vh] p-10 flex items-center justify-between bg-[#ebebeb]">
-      <h2 class="text-2xl"><a href="/">iFaiyan</a></h2>
-      <div class="hidden md:flex gap-10 list-none">
-        <div class="parent-search relative">
-          <input class="search p-2 bg-zinc-200 outline-none" type="search" >
-          <ul class="suggestion-list"></ul>
+      <nav class="w-full h-[10vh] p-10 flex items-center justify-between bg-[#ebebeb]">
+        <h2 class="text-2xl"><a href="/">iFaiyan</a></h2>
+        <div class="hidden md:flex gap-10 list-none">
+          <div class="flex items-center">
+            <h2 class="pr-3">Search:</h2>
+            <div class="relative h-full">
+              <input class="search bg-zinc-200 outline-none p-2" type="search" >
+              <ul class="suggestion-list absolute"></ul>
+            </div>
+          </div>
+          <li class="hover:cursor-pointer"><a href="/">Home</a></li>
+          <li><a href="/logout">LogOut</a></li>
         </div>
-        <li class="hover:cursor-pointer"><a href="/">Home</a></li>
-        <li><a href="/logout">LogOut</a></li>
-      </div>
-      <img class="responsive-button md:hidden w-6" src="https://cdn-icons-png.flaticon.com/128/17821/17821829.png" alt="menu button">
-    </nav>
-
-    <div class="mobile-menu hidden md:hidden left-0 w-full list-none">
-      <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
-        <a class="block" href="/products">Products</a>
-    </li>
-      <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
-        <a class="block" href="/basket">Your Basket</a>
-    </li>
-      <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
-        <a class="block" href="/my-store">My Store</a>
-    </li>
-      <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
-        <a class="block" href="/logout">Logout</a>
-    </li>
-  </div>
-
-    <div class="left-menu w-full h-[90vh] flex bg-[#ebebeb]">
-      <div class="hidden md:block left-0 w-1/5 list-none">
-          <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
-            <a class="block" href="/products">Products</a>
+        <img class="responsive-button md:hidden w-6" src="https://cdn-icons-png.flaticon.com/128/17821/17821829.png" alt="menu button">
+      </nav>
+      
+      <div class="mobile-menu hidden md:hidden left-0 w-full list-none">
+        <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+          <a class="block" href="/products">Products</a>
         </li>
-          <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
-            <a class="block" href="/basket">Basket</a>
+        <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+          <a class="block" href="/basket">Your Basket</a>
         </li>
-          <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
-            <a class="block" href="/my-store">My Store</a>
+        <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+          <a class="block" href="/my-store">My Store</a>
+        </li>
+        <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+          <a class="block" href="/logout">Logout</a>
         </li>
       </div>
       
-      <div class="right w-full md:pl-5 flex gap-10 flex-wrap items-center overflow-y-scroll">
-        <% if(product.length > 0){ %>
-          <% product.forEach(function(item){ %>
-            <div class="bg-white w-full md:w-1/6 rounded p-3">
-              <img class="object-cover w-full h-[200px] rounded-sm" src="<%= item.image %>" alt="product img">
-              <div class="flex mt-2">
-                <img onclick="addCart('<%= item._id %>')" class="w-8 h-8 cursor-pointer" src="https://cdn-icons-png.flaticon.com/128/2956/2956820.png" alt="basket icon">
-                <h2 class="font-light mt-2"><%= item.title.slice(0,60) %>...</h2>
-              </div>
-              <p class="font-medium text-blue-500"><a href="/products/<%= item._id %>">read more...</a></p>
-            </div>
-          <% }) %>
-          <% }else{ %>
-            <h2>There's no product yet!!</h2>
-          <% } %>
+      <div class="left-menu w-full h-[90vh] flex bg-[#ebebeb]">
+        <div class="hidden md:block left-0 w-1/5 list-none">
+          <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+            <a class="block" href="/products">Products</a>
+          </li>
+          <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+            <a class="block" href="/basket">Basket</a>
+          </li>
+          <li class="cursor-pointer hover:bg-blue-500 bg-blue-400 w-full text-center py-3">
+            <a class="block" href="/my-store">My Store</a>
+          </li>
         </div>
         
-      </div>
-      <div class="flex justify-center gap-10">
-        Pages:
-        <% let totalPages = 5 %>
-        <% for (let i = 1; i <= totalPages; i++){ %>
-          <p><a href="/products?p=<%= i - 1 %>"><%= i %></a></p>
-        <% } %>
-      </div>
-    <script src="/js/search.js"></script>
+        <div class="right w-full md:pl-5 flex gap-10 flex-wrap items-center overflow-y-scroll">
+          <% if(product.length > 0){ %>
+            <% product.forEach(function(item){ %>
+              <div class="bg-white w-full md:w-1/6 rounded p-3">
+                <img class="object-cover w-full h-[200px] rounded-sm" src="<%= item.image %>" alt="product img">
+                <div class="flex mt-2">
+                  <img onclick="addCart('<%= item._id %>')" class="w-8 h-8 cursor-pointer" src="https://cdn-icons-png.flaticon.com/128/2956/2956820.png" alt="basket icon">
+                  <h2 class="font-light mt-2"><%= item.title.slice(0,60) %>...</h2>
+                </div>
+                <p class="font-medium text-blue-500"><a href="/products/<%= item._id %>">read more...</a></p>
+              </div>
+              <% }) %>
+              <% }else{ %>
+                <h2>There's no product yet!!</h2>
+                <% } %>
+              </div>
+              
+            </div>
+            <div class="flex justify-center gap-10">
+              Pages:
+              <% let totalPages = 5 %>
+              <% for (let i = 1; i <= totalPages; i++){ %>
+                <p><a href="/products?p=<%= i - 1 %>"><%= i %></a></p>
+                <% } %>
+              </div>
+            <script src="/js/search.js"></script>
   </body>
 </html>
