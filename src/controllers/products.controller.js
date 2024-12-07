@@ -81,7 +81,7 @@ const product = {
   addToCart: async (req, res) => {
     const productId = req.params.id;
     const user = req.user;
-
+    
     try {
       let dbUser = await userModel.findOne({ _id: user._id });
       await dbUser.basket.push(productId);

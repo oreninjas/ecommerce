@@ -56,7 +56,8 @@
       <div class="md:ml-10">
         <div class="flex items-center justify-center mt-5">
           <img
-            class="add-cart w-10 h-10 bg-zinc-100 rounded mr-5"
+            onclick="addCart('<%= product._id %>')"
+            class="add-cart w-10 h-10 bg-zinc-100 rounded mr-5 cursor-pointer"
             src="https://cdn-icons-png.flaticon.com/128/2956/2956820.png"
             alt="basket icon"
           />
@@ -68,6 +69,6 @@
       </div>
     </div>
 
-    <script src="/public/js/addToCart.js"></script>
+    <script src="/js/addToCart.js"></script>
   </body>
 </html>

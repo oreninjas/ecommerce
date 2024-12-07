@@ -12,8 +12,10 @@ button.addEventListener('click', () => {
   }
 });
 
-// Add to Cart Logic
-// const addCartButton = document.querySelector('.add-cart');
-// addCartButton.addEventListener('click', (item) => {
-//     console.log(item._id);
-// });
+// Add to Cart logic
+const addCart = async (productId) => {
+  let response = await fetch(`/products/addtocart/${productId}`, {
+    method: 'POST',
+  });
+  window.location.href = '/basket';
+};
