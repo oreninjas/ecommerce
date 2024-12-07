@@ -12,10 +12,6 @@ button.addEventListener('click', () => {
   }
 });
 
-const addCart = (id) => {
-  console.log(id);
-};
-
 // Search logic
 const searchInput = document.querySelector('.search');
 const suggestionList = document.querySelector('.suggestion-list');
@@ -45,3 +41,11 @@ searchInput.addEventListener('keyup', async () => {
     }
   }
 });
+
+// Add to Cart logic
+const addCart = async (productId) => {
+  let response = await fetch(`/products/addtocart/${productId}`, {
+    method: "POST",
+  });
+  window.location.href = '/products';
+};

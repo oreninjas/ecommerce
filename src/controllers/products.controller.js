@@ -58,19 +58,30 @@ const product = {
   },
   searchSuggestions: async (req, res) => {
     const query = req.query.q;
-    console.log(query);
     if (!query) return res.json([]);
 
     try {
-      const results = await productModel.find({
-        title: { $regex: query, $options: 'i' },
-      }).limit(3);
-
-      console.log(results);
+      const results = await productModel
+        .find({
+          title: { $regex: query, $options: 'i' },
+        })
+        .limit(3);
 
       res.json(results);
     } catch (error) {
       console.log(error);
+    }
+  },
+  addToCart: async (req, res) => {
+    const productId = req.params.id;
+    const user = req.user;
+
+    try {
+      let dbUser = await userModel.findOne({ _id: user._id });
+      await dbUser.basket.push(productId);
+      await dbUser.save();
+    } catch (error) {
+      console.log('Error occured while adding products to cart !! ', error);
     }
   },
 };
